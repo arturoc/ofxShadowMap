@@ -15,5 +15,8 @@ RemoteSystemsTempFiles/
 .project
 .settings
 *.qbs.user
-	
+config.make
+*.qbs
+Makefile
+*xcodeproject	
 
