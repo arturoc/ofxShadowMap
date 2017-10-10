@@ -182,7 +182,7 @@ void ofxShadowMap::setupMaterialWithShadowMap(ofMaterial & material){
 			if(hardShadows > 0.5){
 				visibility -= shadowSub * (1-texture( shadowMap, vec3(shadow_coord.xy, shadow_coord.z - bias) ));
 			}else{
-			   const int totalPasses = 64;
+			   const int totalPasses = 16;
 			   float passSub = shadowSub/float(totalPasses);
 			   const bool bailEarly = true;
 			   int numPassesEstimate = 4;
@@ -191,7 +191,7 @@ void ofxShadowMap::setupMaterialWithShadowMap(ofMaterial & material){
 				   //int index = i;
 				   // int index = int(float(totalPasses)*random(vec4(floor(v_position.xyz*1000.0), i)))%16;
 				   int index = int(float(totalPasses)*random(vec4(gl_FragCoord.xyy, i)))%totalPasses;
-				   visibility -= passSub*(1.0-texture( shadowMap, vec3(shadow_coord.xy + poissonDisk64[index]/shadowSoftScatter, shadow_coord.z-bias) ));
+				   visibility -= passSub*(1.0-texture( shadowMap, vec3(shadow_coord.xy + poissonDisk16[index]/shadowSoftScatter, shadow_coord.z-bias) ));
 			   }
 			   if(bailEarly && visibility < 1.0){
 				   if(visibility > 1.0 - (passSub * 4.0)){
@@ -199,7 +199,7 @@ void ofxShadowMap::setupMaterialWithShadowMap(ofMaterial & material){
 						   // int index = i;
 						   // int index = int(float(totalPasses)*random(vec4(floor(v_position.xyz*1000.0), i)))%totalPasses;
 						   int index = int(float(totalPasses)*random(vec4(gl_FragCoord.xyy, i)))%totalPasses;
-						   visibility -= passSub*(1.0-texture( shadowMap, vec3(shadow_coord.xy + poissonDisk64[index]/shadowSoftScatter, shadow_coord.z-bias) ));
+						   visibility -= passSub*(1.0-texture( shadowMap, vec3(shadow_coord.xy + poissonDisk16[index]/shadowSoftScatter, shadow_coord.z-bias) ));
 					   }
 				   }else{
 					   visibility = 1.0 - shadowSub;
