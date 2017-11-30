@@ -1,3 +1,3 @@
-ofxShadowMap
-ofxGui
 ofxAssimpModelLoader
+ofxGui
+ofxShadowMap

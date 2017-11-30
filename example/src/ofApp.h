@@ -43,5 +43,14 @@ class ofApp : public ofBaseApp{
 
 		ofPlanePrimitive ground{400,400,2,2};
 		ofMaterial groundMaterial;
+#if OF_VER_09X
+		void listenerFunction(bool& on) {
+			if (!on) {
+				shadowMap.begin(light, fustrumSize, 1, farClip);
+				shadowMap.end();
+			}
+		}
+#else
 		ofEventListener listener;
+#endif
 };
