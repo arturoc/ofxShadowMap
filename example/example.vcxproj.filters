@@ -96,6 +96,9 @@
     <Filter Include="addons\ofxShadowMap\src">
       <UniqueIdentifier>{CDF987C9-B11A-C4C3-C9ED-9102}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxShadowMap\src\shaders">
+      <UniqueIdentifier>{f5305bb2-f764-48cc-945b-77f364775496}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -263,5 +266,13 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\shaders\phong.vert">
+      <Filter>addons\ofxShadowMap\src\shaders</Filter>
+    </None>
+    <None Include="..\src\shaders\phong.frag">
+      <Filter>addons\ofxShadowMap\src\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
