@@ -2,6 +2,7 @@
 #include "ofLight.h"
 #include "ofMaterial.h"
 #include "ofGraphics.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 bool ofxShadowMap::setup(int size, Resolution resolution){
 	bool success = writeMapShader.setupShaderFromSource(GL_VERTEX_SHADER,
@@ -211,7 +212,7 @@ void ofxShadowMap::setupMaterialWithShadowMap(ofMaterial & material){
 	)";
 
 
-	ofMaterial::Settings settings;
+	ofMaterialSettings settings;
 	settings.ambient = material.getAmbientColor();
 	settings.diffuse = material.getDiffuseColor();
 	settings.emissive = material.getEmissiveColor();
@@ -245,7 +246,7 @@ void ofxShadowMap::begin(ofLight & light, float fustrumSize, float nearClip, flo
 		0.5, 0.5, 0.5, 1.0);
 	lastBiasedMatrix = bias * viewProjection;
 	writeMapShader.begin();
-	fbo.begin(ofFboBeginMode::NoDefaults);
+	fbo.begin(OF_FBOMODE_NODEFAULTS);
 	ofPushView();
 	ofSetMatrixMode(OF_MATRIX_PROJECTION);
 	ofLoadMatrix(ortho);
