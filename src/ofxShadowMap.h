@@ -1,9 +1,6 @@
 #pragma once
 
-#include "ofConstants.h"
-#include "ofShader.h"
-#include "ofFbo.h"
-#include "ofParameter.h"
+#include "ofMain.h"
 
 class ofxShadowMap{
 public:

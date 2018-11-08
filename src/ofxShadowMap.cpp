@@ -1,8 +1,4 @@
 #include "ofxShadowMap.h"
-#include "ofLight.h"
-#include "ofMaterial.h"
-#include "ofGraphics.h"
-#include "glm/gtc/matrix_transform.hpp"
 
 bool ofxShadowMap::setup(int size, Resolution resolution){
 	bool success = writeMapShader.setupShaderFromSource(GL_VERTEX_SHADER,
